@@ -68,23 +68,30 @@ namespace NPOI.SS.Formula.Functions
 
         private int TranslateErrorCodeToErrorTypeValue(int errorCode)
         {
-            switch (errorCode)
+            var values = new FormulaError[] {
+                FormulaError.NULL,
+                FormulaError.DIV0,
+                FormulaError.VALUE,
+                FormulaError.REF,
+                FormulaError.NAME,
+                FormulaError.NUM,
+                FormulaError.NA,
+                FormulaError.CIRCULAR_REF,
+                FormulaError.FUNCTION_NOT_IMPLEMENTED
+            };
+
+            try
             {
-                case ErrorConstants.ERROR_NULL:
-                    return 1;
-                case ErrorConstants.ERROR_DIV_0:
-                    return 2;
-                case ErrorConstants.ERROR_VALUE:
-                    return 3;
-                case ErrorConstants.ERROR_REF:
-                    return 4;
-                case ErrorConstants.ERROR_NAME:
-                    return 5;
-                case ErrorConstants.ERROR_NUM:
-                    return 6;
-                case ErrorConstants.ERROR_NA:
-                    return 7;
+                var error = FormulaError.ForInt(errorCode);
+                return values.ToList()
+                    // add index to list
+                    .Select((item, index) => new { index, item })
+                    // find error in list of errors
+                    .Where(i => i.item == error)
+                    // zero based list so add 1
+                    .FirstOrDefault().index + 1;
             }
+            catch { }
             throw new ArgumentException("Invalid error code (" + errorCode + ")");
         }
 
