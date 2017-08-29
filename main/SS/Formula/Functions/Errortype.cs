@@ -18,6 +18,7 @@
 using System;
 using NPOI.SS.Formula.Eval;
 using NPOI.SS.UserModel;
+using System.Linq;
 
 namespace NPOI.SS.Formula.Functions
 {
