@@ -212,10 +212,11 @@ namespace NPOI.HPSF
         ///  if there was no such property before.</returns>
         public Object Put(String name, String value)
         {
-            MutableProperty p = new MutableProperty();
-            p.ID=-1;
-            p.Type=Variant.VT_LPWSTR;
-            p.Value=value;
+            MutableProperty p = new MutableProperty() {
+                ID = -1,
+                Type = Variant.VT_LPWSTR,
+                Value = value
+            };
             CustomProperty cp = new CustomProperty(p, name);
             return Put(cp);
         }
@@ -230,10 +231,12 @@ namespace NPOI.HPSF
         ///  if there was no such property before.</returns>
         public Object Put(String name, long value)
         {
-            MutableProperty p = new MutableProperty();
-            p.ID=-1;
-            p.Type=Variant.VT_I8;
-            p.Value=value;
+            MutableProperty p = new MutableProperty()
+            {
+                ID = -1,
+                Type = Variant.VT_I8,
+                Value = value
+            };
             CustomProperty cp = new CustomProperty(p, name);
             return Put(cp);
         }
@@ -248,10 +251,12 @@ namespace NPOI.HPSF
         ///  if there was no such property before.</returns>
         public Object Put(String name, Double value)
         {
-            MutableProperty p = new MutableProperty();
-            p.ID=-1;
-            p.Type=Variant.VT_R8;
-            p.Value=value;
+            MutableProperty p = new MutableProperty()
+            {
+                ID = -1,
+                Type = Variant.VT_R8,
+                Value = value
+            };
             CustomProperty cp = new CustomProperty(p, name);
             return Put(cp);
         }
@@ -266,10 +271,12 @@ namespace NPOI.HPSF
         ///  if there was no such property before.</returns>
         public Object Put(String name, int value)
         {
-            MutableProperty p = new MutableProperty();
-            p.ID=-1;
-            p.Type=Variant.VT_I4;
-            p.Value=value;
+            MutableProperty p = new MutableProperty()
+            {
+                ID = -1,
+                Type = Variant.VT_I4,
+                Value = value
+            };
             CustomProperty cp = new CustomProperty(p, name);
             return Put(cp);
         }
@@ -284,10 +291,12 @@ namespace NPOI.HPSF
         ///  if there was no such property before.</returns>
         public Object Put(String name, bool value)
         {
-            MutableProperty p = new MutableProperty();
-            p.ID=-1;
-            p.Type=Variant.VT_BOOL;
-            p.Value=value;
+            MutableProperty p = new MutableProperty()
+            {
+                ID = -1,
+                Type = Variant.VT_BOOL,
+                Value = value
+            };
             CustomProperty cp = new CustomProperty(p, name);
             return Put(cp);
         }
@@ -303,10 +312,11 @@ namespace NPOI.HPSF
         ///  if there was no such property before.</returns>
         public Object Put(String name,DateTime value)
         {
-            MutableProperty p = new MutableProperty();
-            p.ID=-1;
-            p.Type=Variant.VT_FILETIME;
-            p.Value=value;
+            MutableProperty p = new MutableProperty() {
+                ID = -1,
+                Type = Variant.VT_FILETIME,
+                Value = value
+            };
             CustomProperty cp = new CustomProperty(p, name);
             return Put(cp);
         }
@@ -346,7 +356,7 @@ namespace NPOI.HPSF
                 }
                 long id = (long)x;
                 CustomProperty cp = (CustomProperty)base[id];
-                return cp != null ? cp.Value : null;
+                return cp?.Value;
             }
         }
         /**
@@ -417,10 +427,12 @@ namespace NPOI.HPSF
             }
             set 
             {
-                MutableProperty p = new MutableProperty();
-                p.ID=PropertyIDMap.PID_CODEPAGE;
-                p.Type=Variant.VT_I2;
-                p.Value=value;
+                MutableProperty p = new MutableProperty()
+                {
+                    ID = PropertyIDMap.PID_CODEPAGE,
+                    Type = Variant.VT_I2,
+                    Value = value
+                };
                 Put(new CustomProperty(p));
             }
         }
